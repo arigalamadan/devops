@@ -1,0 +1,728 @@
+   VM Ware -->  1 server (30 min)
+  * Vagrant 
+
+
+     1)  git bash    (git for windows)
+     2)  Oracle Virtual Box  / VM Ware
+     3)  Vagrant
+
+                                                 Vagrant
+                                                 ------------
+        1) Local Repo.
+        2) Global Repo.
+
+  to Initialize a machine:    (https://app.vagrantup.com)
+ ---------------------------------
+     #vagrant  init  ubuntu/trusty64    (for Ubuntu)
+     #vagrant  init  centos/7                 (for Centos)
+
+  to configure a Vagrantfile
+ -------------------------------------
+     #vi  Vagrantfile
+    config.vm.network "private_network", ip: "192.168.33.24"
+ config.vm.synced_folder ".", "/vagrant", disabled: "true"  (for Centos)
+    vb.memory = "2048"
+    vb.cpus = "2"
+    end
+      :wq   <---- wrirte and quit
+
+  to Pull / start a virtual machine
+ ----------------------------------------------
+     #vagrant up
+
+  to connect to virtual machine:
+ ------------------------------------------
+     #vagrant ssh
+
+  to shutdown a virtual machine:
+ ------------------------------------------
+     #vagrant halt
+
+
+                                            Linux Commands
+                                           --------------------------
+ ($ --> Normal user
+  # --> root user)
+
+     #whoami        --> to get the current user
+     #pwd              --> to get present working dir
+     #date
+     #cal 
+     #cal  2017 
+     #cal  may  2016
+     #hostname                (to get hostname)
+     #hostname  -f            (to get fully qualified hostname)
+
+to find ip Address:
+--------------------------
+     #hostname  -i       (or)
+     #ifconfig               (or)
+     #ip  a
+
+to Change the Hostname:
+-----------------------------------
+     #sudo  su  -             (to connect root user)
+     #vi  /etc/hostname
+     ubuntu.sathya.com
+      :wq    <---- write and quit
+     #reboot
+
+
+to create files:
+--------------------
+      #touch   demo.txt
+      #touch   file1   file2
+      #touch   file{1..100}.txt
+      #cat   > demo.txt             (to insert data)
+    hello world
+    good day
+     [ctrl + d]
+       #cat   demo.txt              (to display file data)
+       #cat   demo.txt   > sample.txt    (to copy data)
+
+to create directories:
+-----------------------------
+       #mkdir  dir1
+       #mkdir  dir2  dir3
+       #rmdir   dir1               (to remove)
+
+to manage files:
+-----------------------
+       #cp   demo.txt   sample.txt     (to copy file data)
+       #mv  demo.txt   sathya           (to rename  file)
+       #rm   demo.txt                         (to remove a file)
+       #cp   *.txt   dir2  
+       #rm  -rf   dir2                           (to remove dir. forcefully)
+
+                             
+                                 Linux Package Installation
+                                ---------------------------------------  
+     * Debian / Ubuntu 
+              > apt
+              > apt-get 
+     * Redhat  / Centos 
+              > rpm  (redhat package manager)
+              > yum          
+ 
+
+ to Update all packages:
+----------------------------------
+            #apt-get  update       (for Ubuntu)
+            #yum  update  -y      (for Redhat)
+ 
+ to Install java:
+ --------------------
+            #yum  install java                          (for Redhat)
+            #apt-get  install  openjdk-7-jdk    (for Ubuntu)
+
+ to Install Web-server: 
+ ------------------------------
+          * to deploy static web-pages  (.html) 
+          * port : 80
+          * apache,  nginx 
+      #apt-get install  apache2    (for Ubuntu)
+      #yum  install  httpd             (for Redhat)
+      #yum  install  net-tools  -y  (for redhat)
+      #netstat -lntp                        (to list ports)
+
+ to deploy webpages:
+ -----------------------------
+       #cd  /var/www/html/
+       #vi  index.html
+     <h1> Hello World </h1>
+          :wq 
+    Browser --> http:// <ip>
+
+
+ to Install App server:   
+ ------------------------------
+          * to deploy  static and dynamic web pages 
+          * port :  8080 
+          * tomcat,  JBoss
+
+      #apt-get install tomcat7  -y     (for Ubuntu)
+      #yum install tomcat  -y            (for CentOs)
+
+  to deploy webpages / .war file in app server
+ -------------------------------------------------------------
+       #cd  /var/lib/tomcat7/webapps/
+       #cd  ROOT
+       #vi index.html
+     <h1> Hello from app server </h1>
+
+   Browser -->  http://<ip address>:8080
+
+
+
+
+
+
+
+
+                     To  establish a Connection b/w two servers
+                    -------------------------------------------------------------
+      * passwd method
+      * ssh method    (secure shell)
+      * ssl  method    (secure socket layer)
+
+ 
+ passwd method 
+-------------------------
+Step-1:  to configure sshd_config
+-----------------------------------------------
+     #sudo  su  -     (to connect to root user)
+     #vi  /etc/ssh/sshd-config 
+ PermitRootLogin  yes
+ PasswordAuthentication  yes
+       :wq   <--- write and quit
+
+Step-2:   to restart service:
+-------------------------------------
+      #service ssh restart            (for Ubuntu)
+      #systemctl   restart  sshd   (for Redhat)
+
+Step-3:   to chagne root password
+-------------------------------------------------
+      #passwd  root
+    Enter new passwd :  root
+
+Step-4:   to connect to other servers
+-------------------------------------------------
+        #ssh   root@192.168.33.45
+
+
+
+    		    ssh keys method 
+    	    	   -------------------------
+Step-1:  to generate keys
+------------------------------------
+        #sudo su  -
+        #cd  ~/.ssh
+        #ssh-keygen
+      * id_rsa         (private key)
+      * id_rsa.pub  (public key)
+
+Step-2:  to send public key
+------------------------------------
+         #ssh-copy-id   root@192.168.33.45
+
+Step-3:  to connect
+------------------------------------
+         #ssh   root@192.168.33.45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+       
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+       
+       
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   VM Ware -->  1 server (30 min)
+  * Vagrant 
+
+
+     1)  git bash    (git for windows)
+     2)  Oracle Virtual Box  / VM Ware
+     3)  Vagrant
+
+                                                 Vagrant
+                                                 ------------
+        1) Local Repo.
+        2) Global Repo.
+
+  to Initialize a machine:    (https://app.vagrantup.com)
+ ---------------------------------
+     #vagrant  init  ubuntu/trusty64    (for Ubuntu)
+     #vagrant  init  centos/7                 (for Centos)
+
+  to configure a Vagrantfile
+ -------------------------------------
+     #vi  Vagrantfile
+    config.vm.network "private_network", ip: "192.168.33.24"
+ config.vm.synced_folder ".", "/vagrant", disabled: "true"  (for Centos)
+    vb.memory = "2048"
+    vb.cpus = "2"
+    end
+      :wq   <---- wrirte and quit
+
+  to Pull / start a virtual machine
+ ----------------------------------------------
+     #vagrant up
+
+  to connect to virtual machine:
+ ------------------------------------------
+     #vagrant ssh
+
+  to shutdown a virtual machine:
+ ------------------------------------------
+     #vagrant halt
+
+
+                                            Linux Commands
+                                           --------------------------
+ ($ --> Normal user
+  # --> root user)
+
+     #whoami        --> to get the current user
+     #pwd              --> to get present working dir
+     #date
+     #cal 
+     #cal  2017 
+     #cal  may  2016
+     #hostname                (to get hostname)
+     #hostname  -f            (to get fully qualified hostname)
+
+to find ip Address:
+--------------------------
+     #hostname  -i       (or)
+     #ifconfig               (or)
+     #ip  a
+
+to Change the Hostname:
+-----------------------------------
+     #sudo  su  -             (to connect root user)
+     #vi  /etc/hostname
+     ubuntu.sathya.com
+      :wq    <---- write and quit
+     #reboot
+
+
+to create files:
+--------------------
+      #touch   demo.txt
+      #touch   file1   file2
+      #touch   file{1..100}.txt
+      #cat   > demo.txt             (to insert data)
+    hello world
+    good day
+     [ctrl + d]
+       #cat   demo.txt              (to display file data)
+       #cat   demo.txt   > sample.txt    (to copy data)
+
+to create directories:
+-----------------------------
+       #mkdir  dir1
+       #mkdir  dir2  dir3
+       #rmdir   dir1               (to remove)
+
+to manage files:
+-----------------------
+       #cp   demo.txt   sample.txt     (to copy file data)
+       #mv  demo.txt   sathya           (to rename  file)
+       #rm   demo.txt                         (to remove a file)
+       #cp   *.txt   dir2  
+       #rm  -rf   dir2                           (to remove dir. forcefully)
+
+                             
+                                 Linux Package Installation
+                                ---------------------------------------  
+     * Debian / Ubuntu 
+              > apt
+              > apt-get 
+     * Redhat  / Centos 
+              > rpm  (redhat package manager)
+              > yum          
+ 
+
+ to Update all packages:
+----------------------------------
+            #apt-get  update       (for Ubuntu)
+            #yum  update  -y      (for Redhat)
+ 
+ to Install java:
+ --------------------
+            #yum  install java                          (for Redhat)
+            #apt-get  install  openjdk-7-jdk    (for Ubuntu)
+
+ to Install Web-server: 
+ ------------------------------
+          * to deploy static web-pages  (.html) 
+          * port : 80
+          * apache,  nginx 
+      #apt-get install  apache2    (for Ubuntu)
+      #yum  install  httpd             (for Redhat)
+      #yum  install  net-tools  -y  (for redhat)
+      #netstat -lntp                        (to list ports)
+
+ to deploy webpages:
+ -----------------------------
+       #cd  /var/www/html/
+       #vi  index.html
+     <h1> Hello World </h1>
+          :wq 
+    Browser --> http:// <ip>
+
+
+ to Install App server:   
+ ------------------------------
+          * to deploy  static and dynamic web pages 
+          * port :  8080 
+          * tomcat,  JBoss
+
+      #apt-get install tomcat7  -y     (for Ubuntu)
+      #yum install tomcat  -y            (for CentOs)
+
+  to deploy webpages / .war file in app server
+ -------------------------------------------------------------
+       #cd  /var/lib/tomcat7/webapps/
+       #cd  ROOT
+       #vi index.html
+     <h1> Hello from app server </h1>
+
+   Browser -->  http://<ip address>:8080
+
+
+
+
+
+
+
+
+                     To  establish a Connection b/w two servers
+                    -------------------------------------------------------------
+      * passwd method
+      * ssh method    (secure shell)
+      * ssl  method    (secure socket layer)
+
+ 
+ passwd method 
+-------------------------
+Step-1:  to configure sshd_config
+-----------------------------------------------
+     #sudo  su  -     (to connect to root user)
+     #vi  /etc/ssh/sshd-config 
+ PermitRootLogin  yes
+ PasswordAuthentication  yes
+       :wq   <--- write and quit
+
+Step-2:   to restart service:
+-------------------------------------
+      #service ssh restart            (for Ubuntu)
+      #systemctl   restart  sshd   (for Redhat)
+
+Step-3:   to chagne root password
+-------------------------------------------------
+      #passwd  root
+    Enter new passwd :  root
+
+Step-4:   to connect to other servers
+-------------------------------------------------
+        #ssh   root@192.168.33.45
+
+
+
+    		    ssh keys method 
+    	    	   -------------------------
+Step-1:  to generate keys
+------------------------------------
+        #sudo su  -
+        #cd  ~/.ssh
+        #ssh-keygen
+      * id_rsa         (private key)
+      * id_rsa.pub  (public key)
+
+Step-2:  to send public key
+------------------------------------
+         #ssh-copy-id   root@192.168.33.45
+
+Step-3:  to connect
+------------------------------------
+         #ssh   root@192.168.33.45
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+       
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+       
+       
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
