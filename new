@@ -1,0 +1,6 @@
+1. A servlet container is a specialized web server that supports servlet execution.
+2. It combines the basic functionality of a web server with certain Java/servlet specific optimizations and extensions (such as an integrated Java runtime environment, and the ability to automatically translate specific URLs into servlet requests).
+3. Individual servlets are registered with a servlet container, providing the container with information such as the functionality, the URL used for identification.
+4. The servlet container then initializes the servlet as necessary and delivers requests to the servlet as they arrive.
+5. Many containers can dynamically add and remove servlets from the system, allowing new servlets to quickly be deployed or removed without affecting other servlets running from the same container.
+6. Servlet containers are also referred to as web containers or web engines. 
