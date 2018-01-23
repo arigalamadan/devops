@@ -1,0 +1,6 @@
+Setting your username in Git
+Git uses your username to associate commits with an identity.
+The git config command can be used to change your Git configuration, including your username. It takes two arguments:
+•	The setting you want to change--in this case, user.name.
+•	Your new name, for example, Billy Everyteen
+To set your username for a specific repository, enter the following command in the root folder of your repository:
